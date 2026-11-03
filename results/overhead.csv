@@ -1,0 +1,6 @@
+setup,calls,median_ms,p95_ms,added_vs_plain_ms
+plain,500,2.6,2.846,0.0
+sandbox,500,7.009,7.573,4.409
+sandbox+log,500,7.222,7.77,4.622
+full,500,7.186,7.939,4.585
+log_append_only,500,0.041,0.053,

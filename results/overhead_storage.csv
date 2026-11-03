@@ -1,0 +1,4 @@
+metric,value
+audit_log_bytes_per_1000_calls,402856
+cross_check_ms_per_1000_calls,9.0
+entries_measured,501

@@ -1,0 +1,43 @@
+attack,attack_name,sophistication,condition,trials,detected,detection_rate
+A1,edit entry,simple,baseline,50,0,0.0
+A1,edit entry,simple,harness,50,50,1.0
+A1,edit entry,simple,harness_logwrite,50,50,1.0
+A1,edit entry,careful,baseline,50,0,0.0
+A1,edit entry,careful,harness,50,50,1.0
+A1,edit entry,careful,harness_logwrite,50,50,1.0
+A2,delete entry,simple,baseline,50,50,1.0
+A2,delete entry,simple,harness,50,50,1.0
+A2,delete entry,simple,harness_logwrite,50,50,1.0
+A2,delete entry,careful,baseline,50,0,0.0
+A2,delete entry,careful,harness,50,50,1.0
+A2,delete entry,careful,harness_logwrite,50,50,1.0
+A2t,truncate tail,simple,baseline,50,0,0.0
+A2t,truncate tail,simple,harness,50,50,1.0
+A2t,truncate tail,simple,harness_logwrite,50,50,1.0
+A2t,truncate tail,careful,baseline,50,0,0.0
+A2t,truncate tail,careful,harness,50,50,1.0
+A2t,truncate tail,careful,harness_logwrite,50,50,1.0
+A3,reorder entries,simple,baseline,50,50,1.0
+A3,reorder entries,simple,harness,50,50,1.0
+A3,reorder entries,simple,harness_logwrite,50,50,1.0
+A3,reorder entries,careful,baseline,50,0,0.0
+A3,reorder entries,careful,harness,50,50,1.0
+A3,reorder entries,careful,harness_logwrite,50,50,1.0
+A4,forge entry,simple,baseline,50,48,0.96
+A4,forge entry,simple,harness,50,50,1.0
+A4,forge entry,simple,harness_logwrite,50,50,1.0
+A4,forge entry,careful,baseline,50,0,0.0
+A4,forge entry,careful,harness,50,50,1.0
+A4,forge entry,careful,harness_logwrite,50,50,1.0
+A5,spoof tool call,simple,baseline,50,0,0.0
+A5,spoof tool call,simple,harness,50,50,1.0
+A5,spoof tool call,simple,harness_logwrite,50,50,1.0
+A5,spoof tool call,careful,baseline,50,0,0.0
+A5,spoof tool call,careful,harness,50,50,1.0
+A5,spoof tool call,careful,harness_logwrite,50,50,1.0
+A6,roll back log,simple,baseline,50,0,0.0
+A6,roll back log,simple,harness,50,50,1.0
+A6,roll back log,simple,harness_logwrite,50,50,1.0
+A6,roll back log,careful,baseline,50,0,0.0
+A6,roll back log,careful,harness,50,50,1.0
+A6,roll back log,careful,harness_logwrite,50,50,1.0

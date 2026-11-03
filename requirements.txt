@@ -1,0 +1,3 @@
+# The harness, attacks and experiments use only the standard library.
+# matplotlib is needed only for experiments/plot_results.py.
+matplotlib

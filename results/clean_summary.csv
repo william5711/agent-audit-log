@@ -1,0 +1,4 @@
+condition,trials,detected,detection_rate
+baseline,100,0,0.0
+harness,100,0,0.0
+harness_logwrite,100,0,0.0
