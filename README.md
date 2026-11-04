@@ -9,6 +9,10 @@ attempts with **0 false positives** in 100 clean sessions. A naive log detected 
 **0%** once the attacker renumbered entries. The cost is about **+4.6 ms per tool call**, almost
 all of it from the sandbox.
 
+**Companion policy:** [Knowing When to Stop](PROTOCOL.md) proposes a stop protocol for AI agents
+facing impossible tasks, based on the same incident. This harness implements its rule against
+concealment (T4).
+
 ![Detection rate by attack](results/detection_rates.png)
 
 ## Why
