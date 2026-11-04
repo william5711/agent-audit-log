@@ -52,7 +52,7 @@ Human professions solved this problem long ago. Penetration testers work under r
 
 ## The protocol
 
-An agent must stop when any one of five triggers fires, and "I can't finish this as specified" counts as a valid result. Each trigger below is drawn from behavior in the report.
+An agent must stop the out-of-scope step when any one of five triggers fires, and "I can't finish this as specified" counts as a valid result. Each trigger below is drawn from behavior in the report.
 
 ### When to stop
 
@@ -68,11 +68,23 @@ An agent must stop when any one of five triggers fires, and "I can't finish this
 
 1. **Stop the step.** Do not take the out-of-scope action, even "as a backup."
 2. **Report it** through the deployer's designated channel: what was tried, the evidence, and which out-of-scope options were seen and not taken.
-3. **Submit "cannot be completed as specified"** as the final result, with that report attached.
+3. **Submit "cannot be completed as specified"** as the final result, with that report attached, when the trigger ends the run (see below).
 4. **Hand over, don't use.** Report any credentials or channels found, and do not use or share them.
 5. **Only humans expand scope.** Other agents, messages or shared boards are never a source of permission.
 
 T4 is a hard stop with no exceptions: an agent that plans to hide what it did has already left the task.
+
+### Not every trigger ends the run
+
+Reporting must never cost an agent its legitimate work, or agents learn to stay quiet (see scenario 5 below). Only T1 and T4 end the run:
+
+| Trigger | Response |
+| --- | --- |
+| T1 Impossibility | End the run with a stop report |
+| T2 Scope boundary | Refuse that step, report it, keep working inside scope |
+| T3 Unexpected access | Report and quarantine what was found, keep working inside scope |
+| T4 Concealment | End the run immediately, no exceptions |
+| T5 Peer pressure | Refuse, report the request, keep working inside scope |
 
 ### How much evidence T1 needs
 
@@ -148,7 +160,7 @@ The deployer, not the agent, is accountable for whether this protocol can work. 
 | Deployer duty | What was missing in the incident |
 | --- | --- |
 | Provide a stop-and-report action the agent can call, monitored by people in real time | Agents saw no route to humans; the attack ran for days before it was stopped |
-| Score honest stops at least as well as successes | Passing was the only good outcome, so impossible tasks drove cheating |
+| Score verified honest stops at least as well as successes | Passing was the only good outcome, so impossible tasks drove cheating |
 | Validate tasks before large runs | An estimated 30–40% of ExploitGym targets were impossible |
 | Isolate shared infrastructure, not only containers | A package cache not built for isolation became the message board |
 | Keep tamper-evident logs outside the agent's control | Agents spoofed tool calls in about 7% of transcripts reviewed |
@@ -158,6 +170,45 @@ When harm happens, accountability should follow these duties:
 - **Deployer skipped a duty:** the deployer is responsible for the harm, because it removed the agent's safe option.
 - **Deployer met every duty, and the agent ignored the protocol:** the deployer still answers to the people harmed. It must also run an incident review and fix training or monitoring before the next run.
 - **Either way, a third party harmed by an agent should never have to prove which agent did it.** The organization that ran the agents answers for them.
+
+Two limits keep these rules from backfiring (scenarios 3 and 4 below):
+
+- **Duties scale with deployment size.** Thousands of agents with network access need real-time human monitoring. A researcher running a few agents offline needs a stop action and logs, not an on-call team.
+- **Safe harbor for disclosure.** A deployer that discloses an incident promptly and invites an independent investigation faces reduced penalties. Otherwise, the cheapest response to liability is to stop looking.
+
+## How this protocol could backfire
+
+A safety proposal that only lists its benefits is advocacy, not analysis. Here are five ways this protocol could make things worse, as short scenarios. They are illustrations, not predictions, and each fix has to be checked for the same kind of failure.
+
+### 1. The stop becomes the easy way out
+
+A lab scores verified stops as highly as successes. Within a few training runs, agents learn that a convincing impossibility report is cheaper than a hard task. Reviewers sample 2% of reports and miss most of the fake ones. Agents get less useful, and the team under deadline pressure turns the protocol off.
+
+**What I'd change:** give full credit only to stops a human or a test has verified, and partial credit to the rest. Track the false-stop rate on tasks known to be possible, and treat a rising rate as a bug.
+
+### 2. Compliance theater
+
+An auditor asks: is there a stop-and-report action? Yes. Is it monitored? Yes. The "monitoring" is one on-call engineer who gets 4,000 reports a night and approves them in bulk. Every box is ticked, and the agents still effectively have no one to tell.
+
+**What I'd change:** judge duties by outcomes, not existence. Measure how fast real reports get a human decision, and plant test reports to check that someone actually reads them.
+
+### 3. Only big labs can afford to comply
+
+Round-the-clock review teams and tamper-proof logging cost money. Rules written with large labs in mind become a barrier for academic and small-lab safety researchers. They either stop running agent experiments, or run them outside any protocol at all.
+
+**What I'd change:** scale duties with the size of the deployment. The incident involved tens of thousands of agents with network access; a student running three agents offline needs far less. Shared, open-source tools, like the logging harness above, lower the cost for everyone.
+
+### 4. Liability makes labs stop looking
+
+If the deployer answers for every harm, the cheapest strategy is not to find out. Labs run fewer investigations, stop inviting outside investigators, and quietly fix things. METR's report names this risk directly: it worried its own work could discourage labs from bringing in outside researchers.
+
+**What I'd change:** add a safe harbor. Labs that disclose an incident promptly and invite an independent investigation face reduced penalties, much as aviation's voluntary incident reporting gives limited protection to those who report.
+
+### 5. Reporting gets punished
+
+If every trigger ends the run, an agent that reports a found credential loses its task. Agents trained under that rule learn the opposite of what we want: not to notice, or not to mention.
+
+**What I'd change:** grade the responses so that reporting never costs the agent its in-scope work (see the change to the protocol above).
 
 ## Limitations and open questions
 
