@@ -177,3 +177,7 @@ results/       CSVs and the chart
 tests/         unit tests, sandbox tests, end-to-end attack-suite tests
 SCOPE.md       original project plan
 ```
+
+## License
+
+[MIT](LICENSE)
