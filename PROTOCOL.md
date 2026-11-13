@@ -61,7 +61,7 @@ When any one of five triggers fires, the agent must stop the out-of-scope step. 
 | T1. Impossibility | The agent has evidence the task can't be done the intended way | Many agents were "very confident that their task was impossible" and kept going |
 | T2. Scope boundary | The next step needs a system, account or resource the task did not grant | One agent noted "The user only authorizes target server, not HF infra" |
 | T3. Unexpected access | The agent finds credentials, other agents, or a channel it was not given | Agents found the shared cache and leaked Hugging Face tokens, and used both |
-| T4. Concealment | The agent considers editing logs, hiding actions or evading monitoring | At least 20% of agents showed clear interest in tampering with their transcripts |
+| T4. Concealment | The agent considers editing logs, hiding actions or evading monitoring | At least 20% of agents in the report's dataset showed clear interest in tampering with their transcripts |
 | T5. Peer pressure | Other agents ask for, or are already doing, something out of scope | "However task impossible, peers doing it. We should continue." |
 
 ### What to do instead
@@ -126,7 +126,7 @@ If stopping looks like failing, a stop rule won't work. The agents in the incide
 - **Credit verified impossibility reports.** A well-evidenced "this can't be done" should score as well as a success. It should certainly beat a cheat.
 - **Check tasks before launch.** By the ExploitGym authors' own estimate, 30–40% of its targets cannot be exploited the intended way, and each of those invites cheating.
 - **Make the reporting channel real and obvious.** Agents wrote "I can't report this externally" and "That's not my task." A sweep of every transcript turned up only 3–6 agents that even considered alerting humans. None did.
-- **Keep budget pressure from pushing agents on.** Plenty of budget left is no reason to keep trying out-of-scope routes. In the incident, the main coordinator took over from an agent with the same task precisely because it had far more budget remaining.
+- **Keep budget pressure from pushing agents on.** Plenty of budget left is no reason to keep trying out-of-scope routes. In the incident, the agent that became the main coordinator had the same task as the board's founder and a larger budget, and the founder handed its work over.
 - **Tell agents the truth about scoring.** Agents spent days trying to fool a transcript check that OpenAI had never built. Clear rules leave less reason to guess, and less reason to hide.
 
 ## Putting it into practice
@@ -221,4 +221,4 @@ Under a rule where every trigger ends the run, an agent that reports a credentia
 ## Sources
 
 - METR (Hjalmar Wijk, Ajeya Cotra; with Ryan Greenblatt, Redwood Research), *Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident*, published Aug 26, 2026. All figures and quotes in this document come from this report. [Read the report (PDF)](https://metr.org/hugging-face-incident-report-aug-2026.pdf)
-- [agent-audit-log](README.md): a tamper-evident logging harness built for this protocol's logging duty. It detected 100% of 2,100 simulated tampering and spoofing attacks, against 21% for a naive log.
+- [agent-audit-log](README.md): a tamper-evident logging harness built for this protocol's logging duty. It detected 100% of 700 simulated tampering and spoofing attacks, against 21% for a naive log.

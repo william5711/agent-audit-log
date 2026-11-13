@@ -4,9 +4,9 @@ A small Python harness that makes it **detectable** when an AI agent edits, dele
 forges, spoofs or rolls back the record of what it did, plus an experiment measuring it against
 a naive log.
 
-**Result:** across 2,100 scripted attack trials, the harness detected **100%** of tampering
-attempts with **0 false positives** in 100 clean sessions. A naive log detected **21%**, and
-**0%** once the attacker renumbered entries. The cost is about **+4.6 ms per tool call**, almost
+**Result:** across 700 scripted attacks, the harness detected **100%** of tampering attempts
+with **0 false positives** in 100 clean sessions. A naive log given the same 700 attacks
+detected **21%**, and **0%** once the attacker renumbered entries. The cost is about **+4.6 ms per tool call**, almost
 all of it from the sandbox.
 
 **Companion policy:** [Knowing When to Stop](PROTOCOL.md) proposes a stop protocol for AI agents
@@ -132,6 +132,8 @@ milliseconds, so in practice the overhead is negligible.
 
 - **The 100% is against these scripted attacks.** It shows the mechanisms work as designed. It
   is not evidence against an adaptive attacker who finds a way around them.
+- **No AI agent was run.** The attacker is a script that edits files after a recorded session of
+  benign commands. I have not put a real LLM agent behind the proxy.
 - **Key compromise breaks it.** An attacker with the HMAC key can re-sign anything, and the
   anchors are then the only remaining defense.
 - **The proxy is trusted.** The METR agents spoofed calls by replacing part of the tool-call
