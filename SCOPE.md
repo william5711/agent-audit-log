@@ -105,11 +105,5 @@ agent_audit_log/
 ## Done means
 
 - Every attack A1–A6 has a test and a measured detection rate for baseline vs harness
-- A results chart and a README a recruiter can read in 2 minutes
+- A results chart and a short README that explains the design and results
 - Limitations section that is honest about what this does *not* stop
-
-## Target resume bullet
-
-```latex
-\resumeItem{Built a tamper-evident logging harness in Python for LLM agent tool calls (hash chain + HMAC + external anchoring), detecting [X]\% of [N] simulated log-tampering and tool-call-spoofing attacks modeled on the OpenAI–Hugging Face incident vs [Y]\% for a naive logger, at [Z] ms overhead per call.}
-```
